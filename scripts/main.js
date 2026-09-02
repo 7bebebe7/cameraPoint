@@ -15,7 +15,7 @@ Events.on(ClientLoadEvent, e => {
   //запускаем если checkPlatform активно, но активно оно будет только во время первого запуска
   if (checkPlatform = true) {
     //проверка, если мобильное устройство, то включается кнопка, а если ПК то выключается
-    Vars.mobile ? Core.settings.put("SCB", true) : Core.settings.put("SCB", v)
+    Vars.mobile ? Core.settings.put("SCB", true) : Core.settings.put("SCB", false)
     //переводим переменную в false чтобы больше не проверять
     checkPlatform = false
     //проверка что обнаружение выключилось 
