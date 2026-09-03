@@ -4,6 +4,8 @@ Events.on(ClientLoadEvent, e => {
   
   //добавление вкладки в настройках, и самих настроек (см. ниже)
   Vars.ui.settings.addCategory("Camera Point", Icon.file, cons(t => {
+    //предупреждение
+    t.add("[red]Warning: restart the game to apply the changes")
     //настройка показа кнопки 
     t.check("Show Camera Button", Core.settings.getBool("SCB", true), v => {
       Core.settings.put("SCB", v)
@@ -17,7 +19,7 @@ Events.on(ClientLoadEvent, e => {
         
         var but = t.button("Camera", () => {
           Log.info("input B")
-        }).size(150, 60).center().top().pad(20).get()
+        }).size(150, 60).top().center().pad(20).get()
       
       //чтобы взаемодействовать с кнопкой в переменной нада добавить .get() для кнопки
       //взаемодействуем с кнопкой в переменной
