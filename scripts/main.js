@@ -1,25 +1,53 @@
-//переменная для того чтобы проверить платформу во время первого захода
-let checkPlatform = true
-
 Events.on(ClientLoadEvent, e => {
   
   //добавление вкладки в настройках, и самих настроек (см. ниже)
   Vars.ui.settings.addCategory("Camera Point", Icon.file, cons(t => {
     //настройка показа кнопки 
-    t.check("Show Camera Button", Core.settings.getBool("SCB", false), v => {
+    t.check("Show Camera Button", Core.settings.getBool("SCB", true), v => {
       Core.settings.put("SCB", v)
+    }).left().center().row()
+    
+    //настройка позиции кнопки для удобной игры
+    t.add("[Grey]Button Position")
+    
+    t.check("Top", Core.settings.getBool("BPT", false), v => {
+      Core.settings.put("BPT", true)
+      if (Core.settings.getBool("BPT")) {
+        Core.settings.put("BPR", false)
+        Core.settings.put("BPB", false)
+        Core.settings.put("BPL", false)
+      }
+    }).left().center().row()
+    
+    t.check("Right", Core.settings.getBool("BPR", false), v => {
+      Core.settings.put("BPR", true)
+      if (Core.settings.getBool("BPR")) {
+        Core.settings.put("BPT", false)
+        Core.settings.put("BPB", false)
+        Core.settings.put("BPL", false)
+      }
     }).left().row()
+    
+    t.check("Bottom", Core.settings.getBool("BPB", true), v => {
+      Core.settings.put("BPB", true)
+      if (Core.settings.getBool("BPB")) {
+        Core.settings.put("BPR", false)
+        Core.settings.put("BPT", false)
+        Core.settings.put("BPL", false)
+      }
+    }).left().row()
+    
+    t.check("Left", Core.settings.getBool("BPL", true), v => {
+      Core.settings.put("BPL", true)
+      if (Core.settings.getBool("BPL")) {
+        Core.settings.put("BPR", false)
+        Core.settings.put("BPB", false)
+        Core.settings.put("BPT", false)
+      }
+    }).left().row()
+    
   }))
   
-  //обнаружение платформы пользователя для того чтобы включить/выключить кнопку на екране
+  //добавление кнопки на екран при включенной настройке
   
-  //запускаем если checkPlatform активно, но активно оно будет только во время первого запуска
-  if (checkPlatform = true) {
-    //проверка, если мобильное устройство, то включается кнопка, а если ПК то выключается
-    Vars.mobile ? Core.settings.put("SCB", true) : Core.settings.put("SCB", false)
-    //переводим переменную в false чтобы больше не проверять
-    checkPlatform = false
-    //проверка что обнаружение выключилось 
-    Log.info(checkPlatform)
-  }
 })
