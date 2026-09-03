@@ -17,14 +17,14 @@ Events.on(ClientLoadEvent, e => {
         
         let but = t.button("B", () => {
           cameraPointMemu()
-        }).size(150, 60).pad(20).top().get()
+        }).size(150, 60).pad(20).get()
       
       //чтобы взаемодействовать с кнопкой в переменной нада добавить .get() для кнопки
       //взаемодействуем с кнопкой в переменной
       //color взаемойствует с цветовыми каналами, "a" ето alpha, прозрачнось
       but.color.a = 0.5
       
-      }))
+      })).top()
     }
     
     //создание меню
@@ -33,8 +33,8 @@ Events.on(ClientLoadEvent, e => {
       
       CPM.cont.table(Tex.button, T1 => {
         let xyLabel = T1.add(new TextField("", Styles.defaultField)).width(200).get()
-        T1.setFilter(TextField.TextFieldFilter.digitsOnly)
-        T1.setMessageText("X, Y")
+        xyLabel.setFilter(TextField.TextFieldFilter.digitsOnly)
+        xyLabel.setMessageText("X, Y")
         
         T1.row()
         
