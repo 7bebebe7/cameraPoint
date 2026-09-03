@@ -1,7 +1,5 @@
 Events.on(ClientLoadEvent, e => {
   
-  var buttonActive = true
-  
   //добавление вкладки в настройках, и самих настроек (см. ниже)
   Vars.ui.settings.addCategory("Camera Point", Icon.file, cons(t => {
     //предупреждение
@@ -17,11 +15,9 @@ Events.on(ClientLoadEvent, e => {
       
       Vars.ui.hudGroup.fill(cons(t => {
         
-        t.top().center()
-        
-        var but = t.button("B", () => {
+        let but = t.button("B", () => {
           cameraPointMemu()
-        }).size(150, 60).pad(20).get()
+        }).size(150, 60).pad(20).top().get()
       
       //чтобы взаемодействовать с кнопкой в переменной нада добавить .get() для кнопки
       //взаемодействуем с кнопкой в переменной
@@ -36,7 +32,7 @@ Events.on(ClientLoadEvent, e => {
       const CPM = new BaseDialog("Camera Point Menu")
       
       CPM.cont.table(Tex.button, T1 => {
-        xyLabel = T1.add(new TextField("", Styles.defaultField)).width(200).get()
+        let xyLabel = T1.add(new TextField("", Styles.defaultField)).width(200).get()
         T1.setFilter(TextField.TextFieldFilter.digitsOnly)
         T1.setMessageText("X, Y")
         
