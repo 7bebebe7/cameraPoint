@@ -14,6 +14,7 @@ Events.on(ClientLoadEvent, e => {
     if (Core.settings.getBool("SCB", true)) {
       
       Vars.ui.hudGroup.fill(cons(t => {
+        t.top()
         
         let but = t.button("B", () => {
           cameraPointMemu()
@@ -24,7 +25,7 @@ Events.on(ClientLoadEvent, e => {
       //color взаемойствует с цветовыми каналами, "a" ето alpha, прозрачнось
       but.color.a = 0.5
       
-      })).Top()
+      }))
     }
     
     //создание меню
