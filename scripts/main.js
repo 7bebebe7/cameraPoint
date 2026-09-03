@@ -53,7 +53,7 @@ Events.on(ClientLoadEvent, e => {
         //кнопка для копирования и вставки текущих кординат
         T1.button("Set Pos", () => {
            xyLabel.setText(Math.floor(Vars.player.x) + ", " + Math.floor(Vars.player.y))
-        }).size(150, 60).padTop(5)
+        }).size(150, 60).padTop(10).padBottom(10)
         
       })
       //показ диалога
