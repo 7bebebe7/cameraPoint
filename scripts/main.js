@@ -40,8 +40,8 @@ Events.on(ClientLoadEvent, e => {
         T1.row()
         
         T1.button("Set Pos", () => {
-           xyLabel.setText(Vars.player.x, Vars.player.y)
-        })
+           xyLabel.setText(Vars.player.x + ", " + Vars.player.y)
+        }).size(150, 60).padtop(3)
         
       })
       
