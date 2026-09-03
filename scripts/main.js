@@ -34,14 +34,14 @@ Events.on(ClientLoadEvent, e => {
       
       CPM.cont.table(Tex.button, T1 => {
         let xyLabel = T1.add(new TextField("", Styles.defaultField)).width(200).get()
-        xyLabel.setFilter(TextField.TextFieldFilter.digitsOnly)
+        xyLabel.setFilter((field, c) => /[0-9.,\- ]/.test(c))
         xyLabel.setMessageText("X, Y")
         
         T1.row()
         
         T1.button("Set Pos", () => {
-           xyLabel.setText(Vars.player.x + ", " + Vars.player.y)
-        }).size(150, 60).padTop(3)
+           xyLabel.setText(Math.floor(Vars.player.x) + ", " + Math.floor(Vars.player.y))
+        }).size(150, 60).padTop(5)
         
       })
       
