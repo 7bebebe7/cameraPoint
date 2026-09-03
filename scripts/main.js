@@ -5,7 +5,7 @@ Events.on(ClientLoadEvent, e => {
   //добавление вкладки в настройках, и самих настроек (см. ниже)
   Vars.ui.settings.addCategory("Camera Point", Icon.file, cons(t => {
     //предупреждение
-    t.add("[red]Warning: restart the game to apply the changes")
+    t.add("[red]Warning: restart the game to apply the changes").row()
     //настройка показа кнопки 
     t.check("Show Camera Button", Core.settings.getBool("SCB", true), v => {
       Core.settings.put("SCB", v)
@@ -17,6 +17,8 @@ Events.on(ClientLoadEvent, e => {
       
       Vars.ui.hudGroup.fill(cons(t => {
         
+        t.top().center()
+        
         var but = t.button("B", () => {
           Log.info("input B")
         }).size(150, 60).pad(20).get()
@@ -26,6 +28,6 @@ Events.on(ClientLoadEvent, e => {
       //color взаемойствует с цветовыми каналами, "a" ето alpha, прозрачнось
       but.color.a = 0.5
       
-      })).top().center()
+      }))
     }
 })
