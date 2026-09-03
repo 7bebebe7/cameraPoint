@@ -17,15 +17,15 @@ Events.on(ClientLoadEvent, e => {
       
       Vars.ui.hudGroup.fill(cons(t => {
         
-        var but = t.button("Camera", () => {
+        var but = t.button("B", () => {
           Log.info("input B")
-        }).size(150, 60).top().center().pad(20).get()
+        }).size(150, 60).pad(20).get()
       
       //чтобы взаемодействовать с кнопкой в переменной нада добавить .get() для кнопки
       //взаемодействуем с кнопкой в переменной
       //color взаемойствует с цветовыми каналами, "a" ето alpha, прозрачнось
       but.color.a = 0.5
       
-      }))
+      })).top().center()
     }
 })
