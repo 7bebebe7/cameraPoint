@@ -31,6 +31,7 @@ Events.on(ClientLoadEvent, e => {
     //создание меню
     function cameraPointMemu() {
       const CPM = new BaseDialog("Camera Point Menu")
+      CPM.addCloseButton()
       
       CPM.cont.table(Tex.button, T1 => {
         let xyLabel = T1.add(new TextField("", Styles.defaultField)).width(200).get()
