@@ -8,7 +8,7 @@ Events.on(ClientLoadEvent, e => {
     }).left().center().row()
     
     //настройка позиции кнопки для удобной игры
-    t.add("[Grey]Button Position")
+    t.add("[gray]Button Position").row()
     
     t.check("Top", Core.settings.getBool("BPT", false), v => {
       Core.settings.put("BPT", true)
