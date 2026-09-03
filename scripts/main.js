@@ -31,21 +31,32 @@ Events.on(ClientLoadEvent, e => {
     //создание меню
     function cameraPointMemu() {
       const CPM = new BaseDialog("Camera Point Menu")
+      //добавляем втроеную кнопку выхода
       CPM.addCloseButton()
       
+      //список/меню для красоты
       CPM.cont.table(Tex.button, T1 => {
+        //берем выравнивание из движка
+        const Align = Packages.arc.util.Align
+        
+        //создаем текстовое поле и настраиваем(см. ниже)
         let xyLabel = T1.add(new TextField("", Styles.defaultField)).width(200).get()
+        //фильтр, на цифры и математические символы
         xyLabel.setFilter((field, c) => /[0-9.,\- ]/.test(c))
+        //задаем неактивный текст для понимания что вводить
         xyLabel.setMessageText("X, Y")
+        //центрируем текст внутри
+        xyLabel.setAlignment(Align.center)
         
         T1.row()
         
+        //кнопка для копирования и вставки текущих кординат
         T1.button("Set Pos", () => {
            xyLabel.setText(Math.floor(Vars.player.x) + ", " + Math.floor(Vars.player.y))
         }).size(150, 60).padTop(5)
         
       })
-      
+      //показ диалога
       CPM.show()
     }
 })
