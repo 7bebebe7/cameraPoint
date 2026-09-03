@@ -24,7 +24,7 @@ Events.on(ClientLoadEvent, e => {
       //color взаемойствует с цветовыми каналами, "a" ето alpha, прозрачнось
       but.color.a = 0.5
       
-      })).top()
+      })).Top()
     }
     
     //создание меню
