@@ -19,11 +19,26 @@ Events.on(ClientLoadEvent, e => {
         let but = t.button("B", () => {
           cameraPointMemu()
         }).size(150, 60).pad(20).get()
+        
+        let but1 = t.button("Z", () => {
+          Log.info("input 1")
+        }).size(60, 60).pad(20).get()
+        
+        let but2 = t.button("X", () => {
+          Log.info("input 2")
+        }).size(60, 60).pad(20).get()
+        
+        let but3 = t.button("C", () => {
+          Log.info("input 3")
+        }).size(60, 60).pad(20).get()
       
       //чтобы взаемодействовать с кнопкой в переменной нада добавить .get() для кнопки
       //взаемодействуем с кнопкой в переменной
       //color взаемойствует с цветовыми каналами, "a" ето alpha, прозрачнось
       but.color.a = 0.5
+      but1.color.a = 0.5
+      but2.color.a = 0.5
+      but3.color.a = 0.5
       
       }))
     }
