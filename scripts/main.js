@@ -36,11 +36,9 @@ Events.on(ClientLoadEvent, e => {
       
       //список/меню для красоты
       CPM.cont.table(Tex.button, T1 => {
-        //берем выравнивание из движка
-        const Align = Packages.arc.util.Align
-        
+
         //создаем текстовое поле и настраиваем(см. ниже)
-        let xyLabel = T1.add(new TextField("", Styles.defaultField)).width(200).get()
+        let xyLabel = T1.add(new TextField(Core.settings.getString("CPM_xy", ""),  Styles.defaultField)).width(200).padBottom(20).get()
         //фильтр, на цифры и математические символы
         xyLabel.setFilter((field, c) => /[0-9.,\- ]/.test(c))
         //задаем неактивный текст для понимания что вводить
@@ -48,12 +46,18 @@ Events.on(ClientLoadEvent, e => {
         //центрируем текст внутри
         xyLabel.setAlignment(Align.center)
         
+        //при изменении значения будем его сохранять
+        xyLabel.changed(() => {
+          Core.settings.put("CPM_xy", xyLabel.getText())
+        })
+        
         T1.row()
         
         //кнопка для копирования и вставки текущих кординат
         T1.button("Set Pos", () => {
-           xyLabel.setText(Math.floor(Vars.player.x) + ", " + Math.floor(Vars.player.y))
-        }).size(150, 60).padTop(10).padBottom(10)
+           xyLabel.setText(Vars.player.tileX() + ", " + Vars.player.tileY())
+           Core.settings.put("CPM_xy", Vars.player.tileX() + ", " + Vars.player.tileY())
+        }).size(150, 60).padBottom(10)
         
       })
       //показ диалога
