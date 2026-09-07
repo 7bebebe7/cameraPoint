@@ -121,8 +121,16 @@ Events.on(ClientLoadEvent, e => {
     
     //настройка физических клавиш
     Events.run(Trigger.update, () => {
-      if (Core.input.keyTap(KeyCode.a)) {
-        Log.info("input: a")
+      if (Core.input.keyTap(KeyCode.z)) {
+        Log.info("input: z")
+      }
+      
+      if (Core.input.keyTap(KeyCode.x)) {
+        Log.info("input: x")
+      }
+      
+      if (Core.input.keyTap(KeyCode.c)) {
+        Log.info("input: c")
       }
     })
 })
